@@ -3,33 +3,33 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://blog-server-v2u7.onrender.com/api/auth", // Adjusted to include /api/auth
-    credentials: "include",  // Ensures cookies are included in the requests
+    baseUrl: "http://localhost:5000/api/auth",
+    credentials: "include",
   }),
   endpoints: (builder) => ({
     registerUser: builder.mutation({
       query: (newUser) => ({
-        url: "/register", // will call /api/auth/register
+        url: "/register",
         method: "POST",
         body: newUser,
       }),
     }),
     loginUser: builder.mutation({
       query: (credentials) => ({
-        url: "/login", // will call /api/auth/login
+        url: "/login",
         method: "POST",
         body: credentials,
       }),
     }),
     logoutUser: builder.mutation({
       query: () => ({
-        url: "/logout", // will call /api/auth/logout
+        url: "/logout",
         method: "POST",
       }),
     }),
     getUsers: builder.query({
       query: () => ({
-        url: "/users", // will call /api/auth/users
+        url: "/users",
         method: "GET",
       }),
       refetchOnMount: true,
@@ -37,13 +37,14 @@ const authApi = createApi({
     }),
     deleteUser: builder.mutation({
       query: (userId) => ({
-        url: `/users/${userId}`, // will call /api/auth/users/:userId
+        url: `/users/${userId}`,
         method: "DELETE",
       }),
     }),
+
     updateUserRole: builder.mutation({
       query: ({ userId, role }) => ({
-        url: `/users/${userId}`, // will call /api/auth/users/:userId
+        url: `/users/${userId}`,
         method: "PUT",
         body: { role },
       }),

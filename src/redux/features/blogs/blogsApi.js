@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const blogsApi = createApi({
   reducerPath: "blogsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://blog-server-v2u7.onrender.com/api/",
+    baseUrl: "http://localhost:5000/api/",
     credentials: "include", // Include credentials globally
   }),
   tagTypes: ["Blogs"],
